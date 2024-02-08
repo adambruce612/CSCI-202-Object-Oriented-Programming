@@ -161,7 +161,7 @@ public class TwentyOneGame
         //   Do NOT use the magic number 21 in your code. Instead,
         //   use the class constant TARGET_SCORE
         int score = 0;
-        boolean hasAce = false;
+        int numAces = 0;
 
         for (int i = 0; i < hand.size(); i++)
         {
@@ -170,7 +170,7 @@ public class TwentyOneGame
             if (currentCardValue == 1)
             {
                 score += 11;
-                hasAce = true;
+                numAces++;
             }
             if (currentCardValue >= 2 && currentCardValue <= 10)
             {
@@ -181,7 +181,11 @@ public class TwentyOneGame
                 score += 10;
             }
 
-            
+            if (score > TARGET_SCORE && numAces > 0)
+            {
+                score -= 10;
+                numAces--;
+            }
         }
 
         return score; // Temporary return value. Replace this line.
