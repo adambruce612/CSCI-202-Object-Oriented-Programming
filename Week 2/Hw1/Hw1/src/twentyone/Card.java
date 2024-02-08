@@ -38,33 +38,39 @@ public class Card
     }
 
     // TODO: add any needed private data fields here.
-    
+    private Rank rank;
+    private Suit suit;
+    private boolean isFaceUp;
 
     public Card(Rank theRank, Suit theSuit, boolean isTheCardFaceUp)
     {
         // TODO: write constructor here.
+        rank = theRank;
+        suit = theSuit;
+        isFaceUp = isTheCardFaceUp;
     }
 
     public Rank getRank()
     {
         // TODO: write method body here.
-        return Rank.ACE; // Temporary return value. Replace this line.
+        return rank; // Temporary return value. Replace this line.
     }
 
     public Suit getSuit()
     {
         // TODO: write method body here.
-        return Suit.SPADES; // Temporary return value. Replace this line.
+        return suit;
     }
 
     public boolean isFaceUp()
     {
         // TODO: write method body here.
-        return false; // Temporary return value. Replace this line.
+        return isFaceUp; // Temporary return value. Replace this line.
     }
 
     public void setFaceUp(boolean newValue)
     {
         // TODO: write method body here.
+        isFaceUp = newValue;
     }
 }

@@ -82,6 +82,13 @@ public class TwentyOneGame
         //   described in the instructions. Do NOT use any of
         //   the Java library utilities to do the shuffling
         //   except for the Random generator object in this class.
+        for (int i = deck.length-1; i >= 1; i--)
+        {
+             int j = generator.nextInt(i+1);
+             Card temp = deck[i];
+             deck[i] = deck[j];
+             deck[j] = temp;
+        }
     }
 
     // Player takes a card from the deck.
@@ -152,8 +159,32 @@ public class TwentyOneGame
         //   The returned score is the sum of the scores of all the cards
         //   in the ArrayList hand.
         //   Do NOT use the magic number 21 in your code. Instead,
-        //   use the class constant TARGET_SCORE.
-        return TARGET_SCORE; // Temporary return value. Replace this line.
+        //   use the class constant TARGET_SCORE
+        int score = 0;
+        boolean hasAce = false;
+
+        for (int i = 0; i < hand.size(); i++)
+        {
+            int currentCardValue = hand.get(i).getRank().getValue();
+
+            if (currentCardValue == 1)
+            {
+                score += 11;
+                hasAce = true;
+            }
+            if (currentCardValue >= 2 && currentCardValue <= 10)
+            {
+                score += currentCardValue;
+            }
+            if (currentCardValue > 10)
+            {
+                score += 10;
+            }
+
+            
+        }
+
+        return score; // Temporary return value. Replace this line.
     }
 
     public int getHouseScore()
