@@ -160,12 +160,12 @@ public class TwentyOneGame
         //   in the ArrayList hand.
         //   Do NOT use the magic number 21 in your code. Instead,
         //   use the class constant TARGET_SCORE
-        int score = 0;
-        int numAces = 0;
+        int score = 0; // keeps track of current hand total
+        int numAces = 0; // keeps track of the number of aces in hand
 
-        for (int i = 0; i < hand.size(); i++)
+        for (Card card : hand)
         {
-            int currentCardValue = hand.get(i).getRank().getValue();
+            int currentCardValue = card.getRank().getValue();
 
             if (currentCardValue == 1)
             {
