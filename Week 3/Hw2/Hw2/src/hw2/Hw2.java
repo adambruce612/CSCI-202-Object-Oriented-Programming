@@ -51,14 +51,23 @@ public class Hw2 extends Application
         //       Connected this button to a method you create
         //       called addTruck(ActionEvent e).
         //       Add this button to topBox.
+        Button addTruckBtn = new Button("Add Truck");
+        addTruckBtn.setOnAction(this::addTruck);
+        topBox.getChildren().add(addTruckBtn);
 
         // TODO: Create a button with the text "Move" on it.
         //       Connect this button to the method move(ActionEvent e).
         //       Add this button to topBox.
+        Button moveBtn = new Button("Move");
+        moveBtn.setOnAction(this::move);
+        topBox.getChildren().add(moveBtn);
 
         // TODO: Create a button with the text "Clear" on it.
         //       Connect this button to the method clear(ActionEvent e).
         //       Add this button to topBox.
+        Button clearBtn = new Button("Clear");
+        clearBtn.setOnAction(this::clear);
+        topBox.getChildren().add(clearBtn);
 
         BorderPane root = new BorderPane();
         root.setTop(topBox);
@@ -91,13 +100,25 @@ public class Hw2 extends Application
     //       a random color, randomly position the truck, add the
     //       truck to the vehicles ArrayList, and finally add the truck
     //       to drawPane.
+    private void addTruck(ActionEvent e)
+    {
+        Truck truck = new Truck(randomColor());
 
+        randomlyPosition(truck);
+
+        vehicles.add(truck);
+        drawPane.getChildren().add(truck);
+    }
     // This method moves each vehicle to a random position on the screen
     private void move(ActionEvent e)
     {
         // TODO: For each vehicle v in the ArrayList vehicles,
         //       move it to a random position by calling
         //       randomlyPosition(v);
+        for (int j = 0; j < vehicles.size(); j++)
+        {
+            randomlyPosition(vehicles.get(j));
+        }
     }
 
     // This method removes the vehicles on the screen
