@@ -120,7 +120,7 @@ public class MineSweepGame
         }
 
         // uniformly mix newCells
-        for (k = newCells.length; k > 1;)
+        for (k = newCells.length; k > 1; )
         {
             int r = generator.nextInt(k);
             k--;
@@ -165,6 +165,77 @@ public class MineSweepGame
         //   in the game respectively. Do NOT use magic numbers.
 
 
+        for (int i = 0; i < NUM_ROWS; i++)
+        {
+            int c = 0;
+            for (int j = 0; j < NUM_COLS; j++)
+            {
+                if (cells[i][j].value != MINE)
+                {
+                    // Verify cell above is a valid cell.
+                    if (i >= 1)
+                    {
+                        // Check value of the cell and increment c if cell value is a mine.
+                        if (cells[i - 1][j].value == MINE) c++;
+                    }
+
+                    // Check to see if cell below is a valid cell
+                    if (i < (NUM_ROWS - 1))
+                    {
+                        // Check value of the cell and increment c if cell value is a mine.
+                        if (cells[i + 1][j].value == MINE) c++;
+                    }
+
+                    // Verify cell to the left is a valid cell.
+                    if (j >= 1)
+                    {
+                        // Check value of the cell and increment c if cell value is a mine.
+                        if (cells[i][j - 1].value == MINE) c++;
+                    }
+
+                    // Verify cell to the right is a valid cell
+                    if (j < (NUM_COLS - 1))
+                    {
+                        // Check value of the cell and increment c if cell value is a mine.
+                        if (cells[i][j + 1].value == MINE) c++;
+                    }
+
+                    // Verify cell to the upper left is a valid cell
+                    if (i >= 1 && j >= 1)
+                    {
+                        // Check value of the cell and increment c if cell value is a mine.
+                        if (cells[i - 1][j - 1].value == MINE) c++;
+                    }
+
+                    // Verify cell to the upper right is a valid cell
+                    if (i >= 1 && j < (NUM_COLS - 1))
+                    {
+                        // Check value of the cell and increment c if cell value is a mine.
+                        if (cells[i - 1][j + 1].value == MINE) c++;
+                    }
+
+                    // Verify cell to the lower left is a valid cell
+                    if (i < (NUM_ROWS - 1) && j >= 1)
+                    {
+                        // Check value of the cell and increment c if cell value is a mine.
+                        if (cells[i + 1][j - 1].value == MINE) c++;
+                    }
+
+                    // Verify cell to the lower right is a valid cell
+                    if (i < (NUM_ROWS - 1) && j < (NUM_COLS - 1))
+                    {
+                        // Check value of the cell and increment c if cell value is a mine.
+                        if (cells[i + 1][j + 1].value == MINE) c++;
+                    }
+
+                    // Update value of cell with count c
+                    cells[i][j].value = c;
+                    c = 0; // reset c to zero for the next loop
+                }
+            }
+        }
+
+
         // TODO: FOR TESTING PURPOSES ONLY!
         //   Uncomment the lines below to show all cells.
         //   When you are done testing, recomment the lines.
@@ -177,9 +248,10 @@ public class MineSweepGame
                 ui.updateCell(i, j);
             }
         }
-        */
         // END OF TESTING CODE
+        */
     }
+
 
     public void toggleFlag(int row, int col)
     {
@@ -191,8 +263,7 @@ public class MineSweepGame
             cells[row][col].hasFlag = false;
             numMinesLeft++;
             numCellsLeft++;
-        }
-        else if (numMinesLeft > 0)
+        } else if (numMinesLeft > 0)
         {
             // flag cell
             cells[row][col].hasFlag = true;
@@ -270,6 +341,62 @@ public class MineSweepGame
         //      showCell(i, j);
         //   Use NUM_ROWS and NUM_COLS for the number of rows and columns
         //   in the game respectively. Do NOT use magic numbers.
+        if (!isCellFlagged(row, col) && !isOver())
+        {
+            cells[row][col].isShowing = true;
+            ui.updateCell(row, col);
 
+            if (cells[row][col].value == MINE)
+            {
+                hasHitMine = true;
+            } else
+            {
+                numCellsLeft--;
+            }
+
+            if (cells[row][col].value == 0)
+            {
+                if (row >= 1)
+                {
+                    if (!cells[row - 1][col].isShowing)
+                    {
+                        showCell(row - 1, col);
+                    }
+                }
+
+                if (row < (NUM_ROWS - 1))
+                {
+                    if (!cells[row + 1][col].isShowing)
+                    {
+                        showCell(row + 1, col);
+                    }
+                }
+
+                if (col >= 1)
+                {
+                    if (!cells[row][col - 1].isShowing)
+                    {
+                        showCell(row, col - 1);
+                    }
+                }
+
+                if (col < (NUM_COLS - 1))
+                {
+                    if (!cells[row][col + 1].isShowing)
+                    {
+                        showCell(row, col + 1);
+                    }
+                }
+
+                if (col >= 1 && row >= 1)
+                {
+                    if (!cells[row - 1][col - 1].isShowing)
+                    {
+                        showCell(row - 1, col - 1);
+                    }
+                }
+
+            }
+        }
     }
 }
