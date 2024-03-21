@@ -388,7 +388,7 @@ public class MineSweepGame
                     }
                 }
 
-                if (col >= 1 && row >= 1)
+                if (row >= 1 && col >= 1)
                 {
                     if (!cells[row - 1][col - 1].isShowing)
                     {
@@ -396,6 +396,29 @@ public class MineSweepGame
                     }
                 }
 
+                if (row < (NUM_ROWS - 1) && col >= 1)
+                {
+                    if (!cells[row + 1][col - 1].isShowing)
+                    {
+                        showCell(row + 1, col - 1);
+                    }
+                }
+
+                if (row >= 1 && col < (NUM_COLS - 1))
+                {
+                    if (!cells[row - 1][col + 1].isShowing)
+                    {
+                        showCell(row - 1, col + 1);
+                    }
+                }
+
+                if (row < NUM_ROWS - 1 && col < NUM_COLS - 1)
+                {
+                    if (!cells[row + 1][col + 1].isShowing)
+                    {
+                        showCell(row + 1, col + 1);
+                    }
+                }
             }
         }
     }
