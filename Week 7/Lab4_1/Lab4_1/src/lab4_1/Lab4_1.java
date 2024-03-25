@@ -26,28 +26,29 @@ public class Lab4_1
                     registerName();
                     System.out.println("Your name has been changed.");
                 }
-                catch (FileNotFoundException exs)
-                {
-                    System.out.println("Unable to change name.");
-                }
-            }
-
-            System.out.print("Would you like to unregister your name (y/n)? ");
-            response = input.nextLine().toLowerCase();
-            if (response.equals("y"))
-            {
-                try
-                {
-                    boolean isDeleted = file.delete();
-                    if (isDeleted) System.out.println("Your name has been unregistered.");
-                    else System.out.println("There was an error while processing your request.");
-                }
-                catch (SecurityException e)
+                catch (FileNotFoundException e)
                 {
                     System.out.println("There was an error while processing your request.");
                 }
             }
-
+            else
+            {
+                System.out.print("Would you like to unregister your name (y/n)? ");
+                response = input.nextLine().toLowerCase();
+                if (response.equals("y"))
+                {
+                    try
+                    {
+                        boolean isDeleted = file.delete();
+                        if (isDeleted) System.out.println("Your name has been unregistered.");
+                        else System.out.println("There was an error while processing your request.");
+                    }
+                    catch (SecurityException e)
+                    {
+                        System.out.println("There was an error while processing your request.");
+                    }
+                }
+            }
         }
         catch (FileNotFoundException e)
         {

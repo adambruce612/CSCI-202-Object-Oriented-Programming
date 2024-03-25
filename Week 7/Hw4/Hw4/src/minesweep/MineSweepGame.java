@@ -167,7 +167,7 @@ public class MineSweepGame
 
         for (int i = 0; i < NUM_ROWS; i++)
         {
-            int c = 0;
+            int numMines = 0;
             for (int j = 0; j < NUM_COLS; j++)
             {
                 if (cells[i][j].value != MINE)
@@ -176,61 +176,61 @@ public class MineSweepGame
                     if (i >= 1)
                     {
                         // Check value of the cell and increment c if cell value is a mine.
-                        if (cells[i - 1][j].value == MINE) c++;
+                        if (cells[i - 1][j].value == MINE) numMines++;
                     }
 
                     // Check to see if cell below is a valid cell
                     if (i < (NUM_ROWS - 1))
                     {
                         // Check value of the cell and increment c if cell value is a mine.
-                        if (cells[i + 1][j].value == MINE) c++;
+                        if (cells[i + 1][j].value == MINE) numMines++;
                     }
 
                     // Verify cell to the left is a valid cell.
                     if (j >= 1)
                     {
                         // Check value of the cell and increment c if cell value is a mine.
-                        if (cells[i][j - 1].value == MINE) c++;
+                        if (cells[i][j - 1].value == MINE) numMines++;
                     }
 
                     // Verify cell to the right is a valid cell
                     if (j < (NUM_COLS - 1))
                     {
                         // Check value of the cell and increment c if cell value is a mine.
-                        if (cells[i][j + 1].value == MINE) c++;
+                        if (cells[i][j + 1].value == MINE) numMines++;
                     }
 
                     // Verify cell to the upper left is a valid cell
                     if (i >= 1 && j >= 1)
                     {
                         // Check value of the cell and increment c if cell value is a mine.
-                        if (cells[i - 1][j - 1].value == MINE) c++;
+                        if (cells[i - 1][j - 1].value == MINE) numMines++;
                     }
 
                     // Verify cell to the upper right is a valid cell
                     if (i >= 1 && j < (NUM_COLS - 1))
                     {
                         // Check value of the cell and increment c if cell value is a mine.
-                        if (cells[i - 1][j + 1].value == MINE) c++;
+                        if (cells[i - 1][j + 1].value == MINE) numMines++;
                     }
 
                     // Verify cell to the lower left is a valid cell
                     if (i < (NUM_ROWS - 1) && j >= 1)
                     {
                         // Check value of the cell and increment c if cell value is a mine.
-                        if (cells[i + 1][j - 1].value == MINE) c++;
+                        if (cells[i + 1][j - 1].value == MINE) numMines++;
                     }
 
                     // Verify cell to the lower right is a valid cell
                     if (i < (NUM_ROWS - 1) && j < (NUM_COLS - 1))
                     {
                         // Check value of the cell and increment c if cell value is a mine.
-                        if (cells[i + 1][j + 1].value == MINE) c++;
+                        if (cells[i + 1][j + 1].value == MINE) numMines++;
                     }
 
                     // Update value of cell with count c
-                    cells[i][j].value = c;
-                    c = 0; // reset c to zero for the next loop
+                    cells[i][j].value = numMines;
+                    numMines = 0; // reset numMines to zero
                 }
             }
         }
@@ -251,7 +251,6 @@ public class MineSweepGame
         // END OF TESTING CODE
         */
     }
-
 
     public void toggleFlag(int row, int col)
     {
@@ -412,7 +411,7 @@ public class MineSweepGame
                     }
                 }
 
-                if (row < NUM_ROWS - 1 && col < NUM_COLS - 1)
+                if (row < (NUM_ROWS - 1) && col < (NUM_COLS - 1))
                 {
                     if (!cells[row + 1][col + 1].isShowing)
                     {
