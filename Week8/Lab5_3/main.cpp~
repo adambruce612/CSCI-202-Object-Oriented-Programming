@@ -1,0 +1,29 @@
+#include <iostream>
+#include "Person.hpp"
+using namespace std;
+
+void greet(const Person & p);
+
+int main()
+{
+   // TODO:
+   //   1a. Create variables to store the name and age entered in by the user.
+   //   1b. Prompt the user for their name and age, storing the
+   //      results in the variables created in step 1a.
+   //   1c. Create a Person object with the name and age that
+   //      the user entered in step 1b.
+   //   1d. Call greet, passing it the Person object created in step 1c.
+
+}
+
+void greet(const Person & p)
+{
+   // TODO:
+   //   Output a message greeting Person p with their name.
+   //   Then tell them what their age is.
+   //   Call p.getName() and p.getAge() to get p's name and
+   //   age respectively.
+   // Sample output:
+   //   Hello SpongeBob.
+   //   You are 18 years old.
+}
