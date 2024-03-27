@@ -12,15 +12,15 @@ int main()
   string name;
    //   1b. Prompt the user for their name and age, storing the
    //      results in the variables created in step 1a.
-  cout << "Enter your name: ";
-  cin >> name endl;
+  cout <<"Enter your name: ";
+  cin >> name;
   cout << "Enter your age: ";
-  cin >> age endl;
-  
+  cin >> age;
    //   1c. Create a Person object with the name and age that
    //      the user entered in step 1b.
+  Person p(name, age);
    //   1d. Call greet, passing it the Person object created in step 1c.
-
+  greet(p);
 }
 
 void greet(const Person & p)
@@ -33,4 +33,7 @@ void greet(const Person & p)
    // Sample output:
    //   Hello SpongeBob.
    //   You are 18 years old.
+  cout << "Hello "<<  p.getName()<< endl;
+				    cout << "You are "<< p.getAge() << " years old."<< endl;
+  
 }
