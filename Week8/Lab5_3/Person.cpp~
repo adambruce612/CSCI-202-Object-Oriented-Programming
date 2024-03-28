@@ -1,7 +1,7 @@
 // TODO: Create the source file for class Person here.
 //    Implement each function (including the constructor)
 //    of Person in this file.
-#include "Person.hpp"
+#include "Person.hpp;
 using namespace std;
 
 Person::Person(const string & theName, int theAge)
@@ -13,13 +13,13 @@ const string & Person::getName() const
   return name;
 }
 
-int getAge() 
+int Person::getAge() const
 {
   return age;
 }
 
-const void setAge(int value)
+void Person::setAge(int value)
 {
-  age  = value;
+  age = value;
 }
 

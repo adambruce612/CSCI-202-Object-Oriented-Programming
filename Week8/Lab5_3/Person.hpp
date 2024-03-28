@@ -11,6 +11,7 @@ private:
   // private section: private class members will be added here
   std::string name;
   int age;
+  
 public:
   // public section: public class members will be added here
   // Constructor.
@@ -25,7 +26,7 @@ public:
   int getAge() const;
 
   // Set the age of the person.
-  void setAge(int value);
+   void setAge(int value);
 }; // END THE CLASS WITH A SEMI-COLON
 
 #endif

@@ -33,7 +33,7 @@ void greet(const Person & p)
    // Sample output:
    //   Hello SpongeBob.
    //   You are 18 years old.
-  cout << "Hello " >> p.getName() endl;
-  cout << "You are " >> p.getAge() << " years old.">> endl;
+  cout << "Hello "<<  p.getName()<< endl;
+				    cout << "You are "<< p.getAge() << " years old."<< endl;
   
 }

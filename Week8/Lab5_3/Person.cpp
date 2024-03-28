@@ -13,12 +13,12 @@ const string & Person::getName() const
   return name;
 }
 
-int Person::getAge() 
+int Person::getAge() const
 {
   return age;
 }
 
-const void setAge(int value)
+void Person::setAge(int value)
 {
   age = value;
 }
